@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/margin_body"
+    android:background="@drawable/bottom_dialog_background"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <TextView
+        android:id="@+id/codeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:text="@string/label_verification_code_title"
+        android:textColor="@color/colorTextWhite"
+        android:textSize="@dimen/text_normal_size"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/codeVerification"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:hint="@string/verification_code_hint"
+        android:textColorHint="@color/colorTextGrey"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:maxLength="6"
+        android:textColor="@color/colorTextWhite"
+        android:padding="10dp"
+        android:inputType="number"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/codeTitle"
+        android:layout_marginTop="20dp"/>
+
+    <View
+        android:id="@+id/codeLine"
+        android:layout_width="50dp"
+        android:layout_height="2dp"
+        android:background="@color/colorTextGrey"
+        android:layout_below="@id/codeVerification"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resend code"
+        android:textSize="@dimen/text_normal_size"
+        android:textColor="@color/colorTextLink"
+        android:clickable="true"
+        android:layout_below="@id/codeLine"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"/>
+
+</RelativeLayout>

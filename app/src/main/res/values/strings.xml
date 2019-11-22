@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name" translatable="false">Wicata</string>
+    <string name="label_register_title">Enter your email to create a new account or log in.</string>
+    <string name="label_next">Next</string>
+    <string name="label_text_email_hint">Email Address</string>
+    <string name="label_email_error">Email invalid</string>
+    <string name="label_app_version" translatable="false">v1.0.0</string>
+    <string name="label_verification_code_title">Enter 6 digits verification code from your email.</string>
+    <string name="verification_code_hint" translatable="false">000000</string>
+</resources>
