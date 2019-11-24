@@ -25,6 +25,7 @@ import java.text.NumberFormat;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.co.wicata.app.R;
+import id.co.wicata.app.Utils.Constants;
 import id.co.wicata.app.model.Response;
 import id.co.wicata.app.remote.ApiClient;
 import retrofit2.Call;
@@ -32,7 +33,7 @@ import retrofit2.Callback;
 
 public class CodeBottomSheetFragment
         extends BottomSheetDialogFragment
-implements View.OnClickListener {
+implements View.OnClickListener, Constants {
 
     @BindView(R.id.countDown)
     TextView mCountDown;
@@ -92,29 +93,6 @@ implements View.OnClickListener {
         });
 
         startCountDown();
-
-        confirmation();
-    }
-
-    private void confirmation() {
-        String email = currentEmail;
-        call = client.getService().confirmation(email);
-        call.enqueue(new Callback<Response>() {
-            @Override
-            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                Toast.makeText(getActivity(),
-                        response.body().getMessage(),
-                        Toast.LENGTH_LONG)
-                        .show();
-            }
-            @Override
-            public void onFailure(Call<Response> call, Throwable t) {
-                Toast.makeText(getActivity(),
-                        t.getMessage(),
-                        Toast.LENGTH_LONG)
-                        .show();
-            }
-        });
     }
 
     private void startCountDown(){
@@ -140,6 +118,27 @@ implements View.OnClickListener {
         }.start();
     }
 
+    private void confirmation() {
+        String email = currentEmail;
+        call = client.getService().confirmation(email);
+        call.enqueue(new Callback<Response>() {
+            @Override
+            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                Toast.makeText(getActivity(),
+                        response.body().getMessage(),
+                        Toast.LENGTH_LONG)
+                        .show();
+            }
+            @Override
+            public void onFailure(Call<Response> call, Throwable t) {
+                Toast.makeText(getActivity(),
+                        t.getMessage(),
+                        Toast.LENGTH_LONG)
+                        .show();
+            }
+        });
+    }
+
     private void verification(){
         String code = mCodeVerification.getText().toString().trim();
         call = client.getService().verification(currentEmail, code);
@@ -147,9 +146,23 @@ implements View.OnClickListener {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
                 if(response.body().isError()){
-                    mCodeVerification.setText("");
-                    mCodeVerification.requestFocus();
+                    switch (response.body().getCode()){
+                        case USER_EXISTS:
+                            dismiss();
+                            break;
+                        case CODE_INVALID:
+                            mCodeVerification.setText("");
+                            mCodeVerification.requestFocus();
+                            dismiss();
+                        default:
+                            break;
+                    }
                 }else{
+                    Bundle bundle = new Bundle();
+                    bundle.putString("email", currentEmail);
+                    PasswordBottomSheetFragment passwordBottomSheetFragment = PasswordBottomSheetFragment.newInstance();
+                    passwordBottomSheetFragment.setArguments(bundle);
+                    passwordBottomSheetFragment.show(getActivity().getSupportFragmentManager(), PasswordBottomSheetFragment.TAG);
                     dismiss();
                 }
 

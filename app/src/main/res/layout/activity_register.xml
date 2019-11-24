@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bakcgroundContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/margin_body"
     android:background="?attr/colorPrimary"
     tools:context=".activity.RegisterActivity">
 
-    <TextView
-        android:id="@+id/appTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textColor="@color/colorTextWhite"
-        android:textStyle="bold"
-        android:fontFamily="@font/roboto_condensed_bod"
-        android:textSize="25sp"
+    <ImageView
+        android:id="@+id/appLogo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/app_logoo"
+        android:transitionName="@string/logo_transition"
         android:layout_centerHorizontal="true"/>
 
     <TextView
@@ -27,7 +26,7 @@
         android:alpha="0.6"
         android:textColor="@color/colorTextWhite"
         android:textSize="18sp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:layout_alignParentEnd="true"
         tools:ignore="RelativeOverlap" />
 
@@ -36,7 +35,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/appTitle"
+        android:layout_below="@id/appLogo"
         android:layout_marginTop="50dp">
 
         <TextView
@@ -70,6 +69,16 @@
             android:background="@color/colorTextGrey"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/registerEmail"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:textAlignment="center"
+            android:textColor="@color/colorDescription"
+            android:text="@string/label_agreeing"
+            android:textSize="12sp"/>
 
     </RelativeLayout>
 

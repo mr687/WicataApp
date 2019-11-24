@@ -5,4 +5,7 @@
     <string name="label_register_title">Masukkan email untuk membuat akun baru atau login.</string>
     <string name="label_text_email_hint">Alamat email</string>
     <string name="label_verification_code_title">Masukkan 6 digit kode verifikasi dari email.</string>
+    <string name="find_your_favorite_destination">Temukan wisata favoritmu</string>
+    <string name="label_my_profile">Profilku</string>
+    <string name="menu_message">Pesan</string>
 </resources>

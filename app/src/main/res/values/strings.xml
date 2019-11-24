@@ -7,4 +7,23 @@
     <string name="label_app_version" translatable="false">v1.0.0</string>
     <string name="label_verification_code_title">Enter 6 digits verification code from your email.</string>
     <string name="verification_code_hint" translatable="false">000000</string>
+    <string name="top_background_transition" translatable="false">topBackground</string>
+    <string name="title_transition" translatable="false">titleTransition</string>
+    <string name="find_your_favorite_destination">Find your favorite destination</string>
+    <string name="menu_message">Message</string>
+    <string name="label_agreeing" translatable="false">By logging in or singing up you are agreeing to our Privacy Police and Terms of Use</string>
+    <string name="label_my_profile">My Profile</string>
+    <string name="logo_transition">logoTransition</string>
+
+    <string-array name="img_list">
+        <item>@drawable/hero</item>
+        <item>@drawable/hero</item>
+        <item>@drawable/hero</item>
+        <item>@drawable/hero</item>
+        <item>@drawable/hero</item>
+        <item>@drawable/hero</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

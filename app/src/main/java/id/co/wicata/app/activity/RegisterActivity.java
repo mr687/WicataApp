@@ -2,31 +2,21 @@ package id.co.wicata.app.activity;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputEditText;
-
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.co.wicata.app.R;
-import id.co.wicata.app.Utils.Constants;
 import id.co.wicata.app.fragment.CodeBottomSheetFragment;
 import id.co.wicata.app.fragment.PasswordBottomSheetFragment;
 import id.co.wicata.app.model.Response;
-import id.co.wicata.app.remote.ApiService;
+import id.co.wicata.app.remote.ApiClient;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegisterActivity
         extends BaseActivity{
@@ -36,17 +26,22 @@ public class RegisterActivity
 
     private String currentEmail;
 
+    private Call<Response> call;
+    private ApiClient client;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
 
+        client = new ApiClient();
+
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setNavigationBarColor(getResources().getColor(R.color.colorPrimary));
         }
 
-        mNext.setOnClickListener(v-> openBottomCode());
+        mNext.setOnClickListener(v-> confirmation());
 
         mEmail.addTextChangedListener(new TextWatcher() {
             @Override
@@ -67,12 +62,39 @@ public class RegisterActivity
             }});
     }
 
+    private void confirmation() {
+        String email = currentEmail;
+        call = client.getService().confirmation(email);
+        call.enqueue(new Callback<Response>() {
+            @Override
+            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                switch (response.body().getCode()){
+                    case CODE_SENT:
+                        openBottomCode();
+                        break;
+                    case USER_EXISTS:
+                        openBottomPassword();
+                        break;
+                    default:
+                        break;
+                }
+                Toast.makeText(RegisterActivity.this,
+                        response.body().getMessage(),
+                        Toast.LENGTH_LONG)
+                        .show();
+            }
+            @Override
+            public void onFailure(Call<Response> call, Throwable t) {
+                Toast.makeText(RegisterActivity.this,
+                        t.getMessage(),
+                        Toast.LENGTH_LONG)
+                        .show();
+            }
+        });
+    }
+
     boolean validateForm() {
-        if(mEmail.getText().toString().trim().length() > 0)
-        {
-            return true;
-        }
-        return false;
+        return mEmail.getText().toString().trim().length() > 0;
     }
 
     public void openBottomCode() {
@@ -82,6 +104,14 @@ public class RegisterActivity
         Bundle b = new Bundle();
         b.putString("email", currentEmail);
         codeBottomSheetFragment.setArguments(b);
-        codeBottomSheetFragment.show(getSupportFragmentManager(), codeBottomSheetFragment.TAG);
+        codeBottomSheetFragment.show(getSupportFragmentManager(), CodeBottomSheetFragment.TAG);
+    }
+
+    private void openBottomPassword(){
+        Bundle bundle = new Bundle();
+        bundle.putString("email", currentEmail);
+        PasswordBottomSheetFragment passwordBottomSheetFragment = PasswordBottomSheetFragment.newInstance();
+        passwordBottomSheetFragment.setArguments(bundle);
+        passwordBottomSheetFragment.show(getSupportFragmentManager(), PasswordBottomSheetFragment.TAG);
     }
 }
