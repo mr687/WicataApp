@@ -3,4 +3,8 @@
     <dimen name="margin_body">20dp</dimen>
     <dimen name="text_button_size">18sp</dimen>
     <dimen name="text_normal_size">18sp</dimen>
+
+    <dimen name="pageMargin">30dp</dimen>
+    <dimen name="offset">30dp</dimen>
+    <dimen name="pageMarginAndOffset">50dp</dimen>
 </resources>

@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import id.co.wicata.app.fragment.HistoryFragment;
+import id.co.wicata.app.fragment.RegionFragment;
 
 public class MainTabAdapter extends FragmentPagerAdapter {
 
@@ -20,16 +20,16 @@ public class MainTabAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position){
             case 0:
-                fragment = new HistoryFragment();
+                fragment = new RegionFragment();
                 break;
             case 1:
-                fragment = new HistoryFragment();
+                fragment = new RegionFragment();
                 break;
             case 2:
-                fragment = new HistoryFragment();
+                fragment = new RegionFragment();
                 break;
             default:
-                fragment = new HistoryFragment();
+                fragment = new RegionFragment();
                 break;
         }
         return fragment;

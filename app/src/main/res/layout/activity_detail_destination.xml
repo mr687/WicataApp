@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".activity.DetailDestinationActivity">
+
+    <include
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/detail_app_bar"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="240dp"
+        app:cardBackgroundColor="@color/colorTextWhite"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="3dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/destinationContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_body"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/destinationInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/destinationTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@id/moreView"
+                        android:text="Pantai Kuta"
+                        style="@style/TextAppearance.MaterialComponents.Headline5"/>
+
+                    <ImageView
+                        android:id="@+id/moreView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/ic_more_vert"
+                        android:layout_alignParentRight="true"/>
+
+                    <TextView
+                        android:id="@+id/destinationPlace"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/destinationTitle"
+                        android:layout_toLeftOf="@id/moreView"
+                        android:text="Bali, Indonesia"
+                        style="@style/TextAppearance.MaterialComponents.Overline"
+                        android:textColor="@color/colorTextLinkDark"/>
+
+                    <TextView
+                        android:id="@+id/destinationDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/destinationPlace"
+                        android:layout_marginTop="@dimen/margin_body"
+                        android:maxLength="200"
+                        style="@style/TextAppearance.MaterialComponents.Body1"
+                        android:text="Roast slobbery doughnuts in a wok with gold tequila for about an hour to cut their bitterness.Ausus de emeritis amor, promissio imber!Important careers witness most afterlifes.Fides."/>
+
+                    <TextView
+                        android:layout_centerHorizontal="true"
+                        android:id="@+id/readMore"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/TextAppearance.MaterialComponents.Overline"
+                        android:text="Read more"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_below="@id/destinationDescription"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/margin_body"
+                    android:id="@+id/destinationMoreInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="More info"
+                        style="@style/TextAppearance.MaterialComponents.Body1"
+                        android:textStyle="bold"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorShimmer"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="@dimen/margin_body"/>
+                    <TextView
+                        android:id="@+id/moreInfoDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Weekday : 7 AM - 8 PM\nWeekend : 5 AM - 10 PM\n\nWeekday : Rp 5.000\nWeekend : Rp 15.000" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/margin_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Facilities"
+                        style="@style/TextAppearance.MaterialComponents.Body1"
+                        android:textStyle="bold"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorShimmer"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="@dimen/margin_body"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <include layout="@layout/item_card_facility"/>
+                        <include layout="@layout/item_card_facility"/>
+                        <include layout="@layout/item_card_facility"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/margin_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Attractions and Shows"
+                        style="@style/TextAppearance.MaterialComponents.Body1"
+                        android:textStyle="bold"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="@color/colorShimmer"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="@dimen/margin_body"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <include layout="@layout/item_card_facility"/>
+                        <include layout="@layout/item_card_facility"/>
+                        <include layout="@layout/item_card_facility"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

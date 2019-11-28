@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/margin_body"
+        app:cardElevation="3dp"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@color/colorWhite">
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            app:shimmer_duration="2000"
+            android:id="@+id/shimmer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/colorShimmer"
+                    android:scaleType="centerCrop" />
+
+                <ImageView
+                    android:id="@+id/tripButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:visibility="gone"
+                    android:clickable="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_above="@id/descriptionContainer"
+                    android:layout_marginBottom="-30dp"
+                    android:layout_marginEnd="18dp"
+                    android:background="@drawable/circle_background"
+                    android:src="@drawable/ic_directions_bus"
+                    android:padding="13dp"
+                    android:elevation="4dp"
+                    android:focusable="true" />
+
+                <RelativeLayout
+                    android:id="@+id/descriptionContainer"
+                    android:layout_below="@id/imageView"
+                    android:layout_width="match_parent"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/titleView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Pantai Kuta"
+                        android:layout_marginRight="80dp"
+                        android:background="@drawable/shimmer_backgrund_dark"
+                        android:textColor="@color/colorShimmerDark"
+                        style="@style/TextAppearance.MaterialComponents.Headline6"/>
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/placeIcon"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_below="@id/titleView"
+                        android:src="@drawable/ic_place"/>
+
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/favoriteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/placeView"
+                        android:src="@drawable/ic_favorite_border"
+                        android:padding="5dp"/>
+
+                    <TextView
+                        android:id="@+id/likeView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1000 likes"
+                        android:layout_toRightOf="@id/favoriteButton"
+                        android:layout_below="@id/placeView"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/shimmer_backgrund_dark"
+                        android:textColor="@color/colorShimmerDark"
+                        style="@style/TextAppearance.MaterialComponents.Caption"/>
+
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/placeView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bali, Indonesia, sdhfgsjfgdsj"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/shimmer_backgrund_dark"
+                        android:textColor="@color/colorShimmerDark"
+                        style="@style/TextAppearance.MaterialComponents.Overline"
+                        android:layout_below="@id/titleView"
+                        android:layout_toRightOf="@id/placeIcon"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</RelativeLayout>

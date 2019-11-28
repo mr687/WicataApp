@@ -7,59 +7,37 @@
     <id.co.wicata.app.element.CustomNestedScrollView
         android:id="@+id/scroolView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:descendantFocusability="blocksDescendants">
             <ImageView
                 android:id="@+id/hero"
                 android:layout_width="match_parent"
+                android:layout_alignParentTop="true"
                 android:layout_height="200dp"
                 android:src="@drawable/hero"
                 android:scaleType="centerCrop"/>
 
-            <RelativeLayout
-                android:layout_marginTop="50dp"
-                android:layout_below="@id/hero"
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@id/carouselViewPager"
+                android:paddingStart="@dimen/margin_body"
+                android:paddingEnd="@dimen/margin_body"
+                android:paddingBottom="@dimen/margin_body"
+                android:id="@+id/regionRecyclerView"
                 android:layout_width="match_parent"
-                android:padding="@dimen/margin_body"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"/>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/region1"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    app:cardBackgroundColor="@color/colorPrimary"/>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/region2"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    android:layout_below="@id/region1"
-                    android:layout_marginTop="@dimen/margin_body"/>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/region3"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    app:cardBackgroundColor="@color/colorPrimary"
-                    android:layout_below="@id/region2"
-                    android:layout_marginTop="@dimen/margin_body"/>
-
-            </RelativeLayout>
-
-            <id.co.wicata.app.element.WrapContentHeightViewPager
-                android:layout_marginTop="70dp"
+            <androidx.viewpager2.widget.ViewPager2
+                android:layout_marginTop="90dp"
                 android:id="@+id/carouselViewPager"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
                 android:clipToPadding="false"
-                android:foregroundGravity="center"
-                android:overScrollMode="never"/>
+                android:clipChildren="false" />
 
         </RelativeLayout>
 

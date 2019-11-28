@@ -2,26 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    android:layout_marginLeft="@dimen/pageMarginAndOffset"
+    android:layout_marginRight="@dimen/pageMarginAndOffset"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent">
 
-    <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.MaterialComponents.CardView"
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="PrivateResource"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="15dp"
-        app:cardUseCompatPadding="true">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imgView"
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.MaterialComponents.CardView"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:src="@drawable/hero"
-            android:scaleType="centerCrop"/>
+            android:layout_height="wrap_content"
+            tools:ignore="PrivateResource"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="@color/colorShimmer">
 
-    </com.google.android.material.card.MaterialCardView>
+            <ImageView
+                android:id="@+id/imgView"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:background="@color/colorShimmer"/>
+
+        </com.google.android.material.card.MaterialCardView>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 </LinearLayout>
