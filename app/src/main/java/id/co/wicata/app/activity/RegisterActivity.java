@@ -1,10 +1,13 @@
 package id.co.wicata.app.activity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,8 @@ public class RegisterActivity
 
     @BindView(R.id.next) TextView mNext;
     @BindView(R.id.registerEmail) EditText mEmail;
+    @BindView(R.id.appLogo)
+    ImageView appLogo;
 
     private String currentEmail;
 
@@ -42,7 +47,12 @@ public class RegisterActivity
         }
 
         mNext.setOnClickListener(v-> confirmation());
-
+        appLogo.setOnClickListener(v->{
+            Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        });
         mEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -63,11 +73,12 @@ public class RegisterActivity
     }
 
     private void confirmation() {
-        String email = currentEmail;
-        call = client.getService().confirmation(email);
+        currentEmail = mEmail.getText().toString().trim();
+        call = client.getService().confirmation(currentEmail);
         call.enqueue(new Callback<Response>() {
             @Override
             public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                Log.d("TAGG", response.toString());
                 switch (response.body().getCode()){
                     case CODE_SENT:
                         openBottomCode();
